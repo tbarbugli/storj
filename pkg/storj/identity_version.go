@@ -18,6 +18,8 @@ const (
 	// V1 represents identity version 1
 	// NB: identities created before identity versioning will be recognized as V1.
 	V1 = IDVersionNumber(iota + 1)
+	// V2 represents identity version 2
+	V2
 )
 
 var (
@@ -28,6 +30,14 @@ var (
 		*/
 		V1: {
 			Number:        V1,
+			NewPrivateKey: pkcrypto.GeneratePrivateKey,
+		},
+		/* V2 changes:
+		+ add version support
+		+ change elliptic curve to non-NIST
+		*/
+		V2: {
+			Number:        V2,
 			NewPrivateKey: pkcrypto.GeneratePrivateKey,
 		},
 	}
