@@ -110,12 +110,8 @@ func TestConfig_Save_with_extension(t *testing.T) {
 			assert.Equal(t, version.Number, caVersion.Number)
 
 			versionExt := tlsopts.NewExtensionsMap(ident.CA)[extensions.IdentityVersionExtID.String()]
-			if ident.ID.Version().Number == 1 {
-				require.NotEmpty(t, versionExt)
-				assert.Equal(t, ident.ID.Version().Number, storj.IDVersionNumber(versionExt.Value[0]))
-			} else {
-				assert.Empty(t, versionExt)
-			}
+			require.NotEmpty(t, versionExt)
+			assert.Equal(t, ident.ID.Version().Number, storj.IDVersionNumber(versionExt.Value[0]))
 		}
 
 		{ // test saving
@@ -144,12 +140,8 @@ func TestConfig_Save_with_extension(t *testing.T) {
 			assert.Equal(t, ident.ID, loadedFi.ID)
 
 			versionExt := tlsopts.NewExtensionsMap(ident.CA)[extensions.IdentityVersionExtID.String()]
-			if ident.ID.Version().Number == 1 {
-				require.NotEmpty(t, versionExt)
-				assert.Equal(t, ident.ID.Version().Number, storj.IDVersionNumber(versionExt.Value[0]))
-			} else {
-				assert.Empty(t, versionExt)
-			}
+			require.NotEmpty(t, versionExt)
+			assert.Equal(t, ident.ID.Version().Number, storj.IDVersionNumber(versionExt.Value[0]))
 		}
 	})
 }
